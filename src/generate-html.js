@@ -1,19 +1,24 @@
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-​
+const Manager = require("../lib/Manager");
+const Engineer = require("../lib/Engineer");
 //Function to generate team HTML
 const generateTeam = (data) => {
-​
-    // let managers = data.filter(employee => employee.getRole() === 'Manager')
-​
-    let engineerHtml = data.filter(employee => employee.getRole() === 'Engineer')
-      .map(engineer => generateEngineerHtml(engineer))
-      .join("")
+  let managerHtml = data
+    .filter((employee) => employee.getRole() === "Manager")
+    .map((manager) => generateManagerHtml(manager))
+    .join("");
 
-    console.log(engineerHtml)
-​
-​
-    return `<!DOCTYPE html>
+  let engineerHtml = data
+    .filter((employee) => employee.getRole() === "Engineer")
+    .map((engineer) => generateEngineerHtml(engineer))
+    .join("");
+
+  let internHtml = data
+    .filter((employee) => employee.getRole() === "Intern")
+    .map((manager) => generateInternHtml(manager))
+    .join("");
+
+  console.log(engineerHtml);
+  return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -40,50 +45,20 @@ const generateTeam = (data) => {
         <!--Employee Cards-->
         <div class="container">
           <div class="row">
-            <!--Manager Card-->
-            <div class="col-sm justify-content-center">
-              <div class="card text-white mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-primary">
-                  <h3>${manager.getName()}</h3>
-                  <h4>${manager.getRole()}</h4>
-                </div>
-                <div class="card-body bg-light">
-                  <ul class="list-item">
-                    <li class="list-group-item">ID: ${manager.getId()}</li>
-                    <li class="list-group-item">Email: ${manager.getEmail()}</li>
-                    <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <!-- Manager Card -->
+            ${managerHtml}
             <!--Engineer Card-->
-​
             ${engineerHtml}
-​
             <!--Intern Card-->
-            <div class="col-sm justify-content-center">
-              <div class="card text-white mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-primary">
-                  <h3>${intern.getName()}</h3>
-                  <h4>${intern.getRole()}</h4>
-                </div>
-                <div class="card-body bg-light">
-                  <ul class="list-item">
-                    <li class="list-group-item">ID: ${intern.getId()}</li>
-                    <li class="list-group-item">Email: ${intern.getEmail()}</li>
-                    <li class="list-group-item">Office number: ${intern.getOfficeNumber()}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            ${internHtml}
           </div>
         </div>
       </body>
     </html>
     `;
 };
-​
-function generateEngineerHtml(engineer){
+
+function generateEngineerHtml(engineer) {
   return `
   <div class="col-sm justify-content-center">
   <div class="card text-white mb-3" style="max-width: 18rem;">
@@ -95,11 +70,51 @@ function generateEngineerHtml(engineer){
       <ul class="list-item">
         <li class="list-group-item">ID: ${engineer.getId()}</li>
         <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+        <li class="list-group-item">Email: ${engineer.getGithub()}</li>
       </ul>
     </div>
   </div>
 </div>
-`
+`;
 }
-​
+// module.exports = generateTeam;
+
+function generateManagerHtml(manager) {
+  return `
+            <div class="col-sm justify-content-center">
+              <div class="card text-white mb-3" style="max-width: 18rem;">
+                <div class="card-header bg-primary">
+                  <h3>${manager.getName()}</h3>
+                  <h4>${manager.getRole()}</h4>
+                </div>
+                <div class="card-body bg-light">
+                  <ul class="list-item">
+                    <li class="list-group-item">ID: ${manager.getId()}</li>
+                    <li class="list-group-item">Email: ${manager.getEmail()}</li>
+                    <li class="list-group-item">Github: ${manager.getOfficeNumber()}</li>
+                  </ul>
+                </div>
+              </div>
+            </div> `;
+}
+
+function generateInternHtml(intern) {
+  return `
+  <div class="col-sm justify-content-center">
+  <div class="card text-white mb-3" style="max-width: 18rem;">
+    <div class="card-header bg-primary">
+      <h3>${intern.getName()}</h3>
+      <h4>${intern.getRole()}</h4>
+    </div>
+    <div class="card-body bg-light">
+      <ul class="list-item">
+        <li class="list-group-item">ID: ${intern.getId()}</li>
+        <li class="list-group-item">Email: ${intern.getEmail()}</li>
+        <li class="list-group-item">School: ${intern.getSchool()}</li>
+      </ul>
+    </div>
+  </div>
+</div>`;
+}
+
 module.exports = generateTeam;

@@ -5,7 +5,8 @@ const Engineer = require('./lib/Engineer')
 const Manager = require('./lib/Manager')
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateTeam = require('./src/generate-html')
+const generateTeam = require("./src/generate-html");
+
 
 //Empty team members array
 const teamMembers = [];
@@ -214,8 +215,7 @@ function addIntern() {
 
 
 function createTeam(filename, data) {
-//    var filename = "./dist/test.html"
-    fs.writeFile('.dist/test/html', generateTeam(data), (err) => {
+    fs.writeFile(filename, generateTeam(data), (err) => {
         if(err) {
             console.log(err)
         } else {
