@@ -9,7 +9,7 @@ test("create engineer object", () => {
 test("getRole() return Engineer", () => {
     const engineer = new Engineer("Michael", 1004, "michael@test.com", "Mich123");
 
-    expect(engineer.getRole()).toBe(Engineer);
+    expect(engineer.getRole()).toBe('Engineer');
 });
 
 

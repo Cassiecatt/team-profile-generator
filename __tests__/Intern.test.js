@@ -9,5 +9,5 @@ test("create intern object", () => {
 test("getRole() return Intern", () => {
     const intern = new Intern("Sara", 8970, "sara@test.com", "UofA");
     
-    expect(intern.getRole()).toBe(Intern);
+    expect(intern.getRole()).toBe('Intern');
 });

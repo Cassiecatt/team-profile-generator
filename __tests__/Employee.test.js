@@ -11,5 +11,5 @@ test("creates employee object", () => {
 test("getRole() return Employee", () => {
     const employee = new Employee("Bob", 1304, "bob@test.com");
 
-    expect(employee.getRole()).toBe(Employee);
+    expect(employee.getRole()).toBe('Employee');
 });
