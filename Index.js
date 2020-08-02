@@ -152,6 +152,65 @@ function addEngineer() {
     });
 }
 
+//Intern questions
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "internName",
+            message: "What is the name of your Intern? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Intern's name")
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "internId",
+            message: "What is your Interns's employee id? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Intern's employee id")
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "internEmail",
+            message: "What is your Intern's email address? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Intern's email address")
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "internSchool",
+            message: "What is your Intern's school? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Intern's school")
+                }
+            }
+        }
+    ]).then(answers => {
+        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+        teamMembers.push(intern);
+        console.log(teamMembers);
+        // buildTeam();
+    });
+}
+
 
 
 teamManager();
