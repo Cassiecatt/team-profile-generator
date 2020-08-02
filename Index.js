@@ -88,7 +88,7 @@ function buildTeam() {
                 addIntern();
                 break;
             default:
-               createTeam(); // need to create
+               createTeam(); 
         }
     });
 }
@@ -207,10 +207,21 @@ function addIntern() {
         const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
         teamMembers.push(intern);
         console.log(teamMembers);
-        // buildTeam();
+        buildTeam();
     });
 }
 
+// function createTeam(fileName, data) {
+//     fs.writeFile('filename', data, (err) => {
+//         if(err) {
+//             console.log(err)
+//         } else {
+//             console.log("HTML successful");
+//         }
+//     });
+// }
 
 
 teamManager();
+
+
