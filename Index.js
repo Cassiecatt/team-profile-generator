@@ -15,7 +15,7 @@ const teamManager = () => {
         {
             type: "input",
             name: "managerName",
-            message: "What is the team manager's name? (Required)",
+            message: "What is the Team Manager's name? (Required)",
             validate: (nameInput) => {
                 if (nameInput) {
                     return true;
@@ -27,36 +27,36 @@ const teamManager = () => {
         {
             type: "input",
             name: "managerId",
-            message: "What is the team manager's employee id? (Required)",
+            message: "What is the Team Manager's employee id? (Required)",
             validate: (nameInput) => {
                 if(nameInput) {
                     return true;
                 } else {
-                    console.log("Please enter team manager's employee id");
+                    console.log("Please enter Team Manager's employee id");
                 }
             }
         },
         {
             type: "input",
             name: "managerEmail",
-            message: "What is the team manager's email address? (Required)",
+            message: "What is the Team Manager's email address? (Required)",
             validate: (nameInput) => {
                 if(nameInput) {
                     return true;
                 } else {
-                    console.log("Please enter team manager's email address");
+                    console.log("Please enter Team Manager's email address");
                 }
             }
         },
         {
             type: "input",
             name: "managerOffice",
-            message: "What is the team manager's office number? (Required)",
+            message: "What is the Team Manager's office number? (Required)",
             validate: (nameInput) => {
                 if(nameInput) {
                     return true;
                 } else {
-                    console.log("Please enter team manager's office number");
+                    console.log("Please enter Team Manager's office number");
                 }
             }
         }
@@ -64,10 +64,94 @@ const teamManager = () => {
         const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOffice);
         teamMembers.push(manager);
         console.log(teamMembers)
+        //call buildTeam() here
+        buildTeam();
+        
     })
 };
 
+//Other team member questions - Engineer & Intern
+function buildTeam() {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "teamChoice",
+            message: "Select the team member you'd like to add",
+            choices: ["Engineer", "Intern", "None"]
+        }
+    ]).then(inputChoice => {
+        switch(inputChoice.teamChoice) {
+            case "Engineer":
+                addEngineer();
+                break;
+            case "Intern":
+                addIntern();
+                break;
+            default:
+               createTeam(); // need to create
+        }
+    });
+}
+
+//Engineer questions
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: "input",
+            name: "engineerName",
+            message: "What is the name of your Engineer? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Engineer's name")
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "engineerId",
+            message: "What is your Engineer's employee id? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Engineer's employee id")
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "engineerEmail",
+            message: "What is your Engineer's email address? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Engineer's email address")
+                }
+            }
+        },
+        {
+            type: "input",
+            name: "engineerGithub",
+            message: "What is your Engineer's Github username? (Required)",
+            validate: (nameInput) => {
+                if(nameInput) {
+                    return true;
+                } else {
+                    console.log("Please provide your Engineer's Github username")
+                }
+            }
+        }
+    ]).then(answers => {
+        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        teamMembers.push(engineer);
+        console.log(teamMembers);
+        buildTeam();
+    });
+}
+
+
 
 teamManager();
-
-//Other team member questions - Engineer & Intern
