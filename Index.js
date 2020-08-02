@@ -5,7 +5,7 @@ const Engineer = require('./lib/Engineer')
 const Manager = require('./lib/Manager')
 const inquirer = require("inquirer");
 const fs = require("fs");
-const generateTeam = require('./src/generate-html-page');
+const generateTeam = require('./src/generate-html')
 
 //Empty team members array
 const teamMembers = [];
@@ -89,7 +89,7 @@ function buildTeam() {
                 addIntern();
                 break;
             default:
-               createTeam(); 
+               createTeam('./dist/test.html', teamMembers); 
         }
     });
 }
@@ -212,10 +212,10 @@ function addIntern() {
     });
 }
 
-// Function to write HTML File
-//.dist/team/html write over existing html
-function createTeam(fileName, data) {
-    fs.writeFile('./dist/test.html', data, (err) => {
+
+function createTeam(filename, data) {
+//    var filename = "./dist/test.html"
+    fs.writeFile('.dist/test/html', generateTeam(data), (err) => {
         if(err) {
             console.log(err)
         } else {
@@ -226,11 +226,6 @@ function createTeam(fileName, data) {
 
 teamManager();
 
-// //Function to initialize 
-// function init() {
-//     teamManager().then(answers=> writeFile("team.html", generateTeam(answers)));
-// }
 
-// init();
 
 

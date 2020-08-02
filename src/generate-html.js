@@ -1,6 +1,18 @@
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
+​
 //Function to generate team HTML
-const generateTeam = () => {
+const generateTeam = (data) => {
+​
+    // let managers = data.filter(employee => employee.getRole() === 'Manager')
+​
+    let engineerHtml = data.filter(employee => employee.getRole() === 'Engineer')
+      .map(engineer => generateEngineerHtml(engineer))
+      .join("")
 
+    console.log(engineerHtml)
+​
+​
     return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -45,21 +57,9 @@ const generateTeam = () => {
               </div>
             </div>
             <!--Engineer Card-->
-            <div class="col-sm justify-content-center">
-              <div class="card text-white mb-3" style="max-width: 18rem;">
-                <div class="card-header bg-primary">
-                  <h3>${engineer.getName()}</h3>
-                  <h4>${engineer.getRole()}</h4>
-                </div>
-                <div class="card-body bg-light">
-                  <ul class="list-item">
-                    <li class="list-group-item">ID: ${engineer.getId()}</li>
-                    <li class="list-group-item">Email: ${engineer.getEmail()}</li>
-                    <li class="list-group-item">Office number: ${engineer.getOfficeNumber()}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+​
+            ${engineerHtml}
+​
             <!--Intern Card-->
             <div class="col-sm justify-content-center">
               <div class="card text-white mb-3" style="max-width: 18rem;">
@@ -82,5 +82,24 @@ const generateTeam = () => {
     </html>
     `;
 };
-
+​
+function generateEngineerHtml(engineer){
+  return `
+  <div class="col-sm justify-content-center">
+  <div class="card text-white mb-3" style="max-width: 18rem;">
+    <div class="card-header bg-primary">
+      <h3>${engineer.getName()}</h3>
+      <h4>${engineer.getRole()}</h4>
+    </div>
+    <div class="card-body bg-light">
+      <ul class="list-item">
+        <li class="list-group-item">ID: ${engineer.getId()}</li>
+        <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+`
+}
+​
 module.exports = generateTeam;
