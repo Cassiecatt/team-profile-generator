@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+//Function to generate team HTML
+const generateTeam = () => {
+
+    return `<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -29,14 +32,14 @@
             <div class="col-sm justify-content-center">
               <div class="card text-white mb-3" style="max-width: 18rem;">
                 <div class="card-header bg-primary">
-                  <h3>Name</h3>
-                  <h4>Role</h4>
+                  <h3>${manager.getName()}</h3>
+                  <h4>${manager.getRole()}</h4>
                 </div>
                 <div class="card-body bg-light">
                   <ul class="list-item">
-                    <li class="list-group-item">ID: placeholder</li>
-                    <li class="list-group-item">Email: placeholder</li>
-                    <li class="list-group-item">Office number: placeholder</li>
+                    <li class="list-group-item">ID: ${manager.getId()}</li>
+                    <li class="list-group-item">Email: ${manager.getEmail()}</li>
+                    <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
                   </ul>
                 </div>
               </div>
@@ -45,14 +48,14 @@
             <div class="col-sm justify-content-center">
               <div class="card text-white mb-3" style="max-width: 18rem;">
                 <div class="card-header bg-primary">
-                    <h3>Name</h3>
-                    <h4>Role</h4>
+                  <h3>${engineer.getName()}</h3>
+                  <h4>${engineer.getRole()}</h4>
                 </div>
                 <div class="card-body bg-light">
                   <ul class="list-item">
-                    <li class="list-group-item">ID: placeholder</li>
-                    <li class="list-group-item">Email: placeholder</li>
-                    <li class="list-group-item">Office number: placeholder</li>
+                    <li class="list-group-item">ID: ${engineer.getId()}</li>
+                    <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+                    <li class="list-group-item">Office number: ${engineer.getOfficeNumber()}</li>
                   </ul>
                 </div>
               </div>
@@ -61,14 +64,14 @@
             <div class="col-sm justify-content-center">
               <div class="card text-white mb-3" style="max-width: 18rem;">
                 <div class="card-header bg-primary">
-                    <h3>Name</h3>
-                    <h4>Role</h4>
+                  <h3>${intern.getName()}</h3>
+                  <h4>${intern.getRole()}</h4>
                 </div>
                 <div class="card-body bg-light">
                   <ul class="list-item">
-                    <li class="list-group-item">ID: placeholder</li>
-                    <li class="list-group-item">Email: placeholder</li>
-                    <li class="list-group-item">Office number: placeholder</li>
+                    <li class="list-group-item">ID: ${intern.getId()}</li>
+                    <li class="list-group-item">Email: ${intern.getEmail()}</li>
+                    <li class="list-group-item">Office number: ${intern.getOfficeNumber()}</li>
                   </ul>
                 </div>
               </div>
@@ -77,3 +80,7 @@
         </div>
       </body>
     </html>
+    `;
+};
+
+module.exports = generateTeam;
