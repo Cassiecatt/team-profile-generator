@@ -8,4 +8,4 @@ A Node.js command line application that takes in information about employees on 
 
 
 ## Screenshot
-![Screenshot of final result from application](https://cassiecatt.github.io/team-profile-generator/assets/app-screenshot.png)
+![Screenshot of final result from application](https://cassiecatt.github.io/team-profile-generator/assets/application-screenshot.png)
